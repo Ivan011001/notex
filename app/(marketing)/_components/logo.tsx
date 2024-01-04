@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 interface LogoProps {
-  title?: boolean;
+  addTitle?: boolean;
 }
 
-export const Logo = ({ title = false }: LogoProps) => {
+export const Logo = ({ addTitle = false }: LogoProps) => {
   return (
     <div className="hidden md:flex items-center gap-x-2">
       <Image src="/logo.svg" height="40" width="40" alt="Logo" className="dark:hidden" />
@@ -20,7 +20,7 @@ export const Logo = ({ title = false }: LogoProps) => {
         alt="Logo"
         className="hidden dark:block"
       />
-      {title && <p className={cn("font-semibold", poppins.className)}>Notex</p>}
+      {addTitle && <p className={cn("font-semibold", poppins.className)}>Notex</p>}
     </div>
   );
 };
