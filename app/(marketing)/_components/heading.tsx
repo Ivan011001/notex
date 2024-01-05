@@ -1,6 +1,7 @@
 "use client";
 
 import { useConvexAuth } from "convex/react";
+import { SignInButton } from "@clerk/clerk-react";
 
 import { ArrowRight } from "lucide-react";
 import { ArrowDownRight } from "lucide-react";
@@ -30,9 +31,11 @@ export const Heading = () => {
       )}
 
       {!isAuthenticated && !isLoading && (
-        <Button>
-          Start <ArrowRight className="w-5 h-5 ml-2" />
-        </Button>
+        <SignInButton mode="modal">
+          <Button>
+            Start <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+        </SignInButton>
       )}
 
       {isAuthenticated && (
