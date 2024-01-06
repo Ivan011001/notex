@@ -1,12 +1,14 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
+import { UserItem } from "./user-item";
 import { ChevronsLeft, Menu } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
 
 export const Sidebar = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -22,6 +24,7 @@ export const Sidebar = () => {
     if (isMobile) {
       collapse();
     } else resetWidth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
 
   useEffect(() => {
@@ -110,7 +113,7 @@ export const Sidebar = () => {
           <ChevronsLeft className="w-8 h-8" />
         </div>
         <div>
-          <p>Actions</p>
+          <UserItem />
         </div>
         <div className="mt-2">
           <p>Notes</p>
@@ -135,7 +138,7 @@ export const Sidebar = () => {
             <div
               onClick={resetWidth}
               role="button"
-              className="h-8 w-8 rounded-sm text-muted-foreground hover:text-primary dark:hover:text-secondary-foreground transition"
+              className="h-8 w-8 rounded-sm text-muted-foreground hover:bg-neutral-200 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition"
             >
               <Menu className="w-8 h-8" />
             </div>
