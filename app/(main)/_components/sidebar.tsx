@@ -3,14 +3,17 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 
 import { UserItem } from "./user-item";
-import { ChevronsLeft, Menu } from "lucide-react";
+import { Item } from "./item";
+
+import { ChevronsLeft, Menu, PlusCircle, Search, Settings } from "lucide-react";
 
 import { api } from "@/convex/_generated/api";
 
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 export const Sidebar = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -23,6 +26,7 @@ export const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const documents = useQuery(api.documents.get);
+  const create = useMutation(api.documents.create);
 
   useEffect(() => {
     if (isMobile) {
@@ -96,6 +100,16 @@ export const Sidebar = () => {
     }
   };
 
+  const onCreate = () => {
+    const promise = create({ title: "No title" });
+
+    toast.promise(promise, {
+      loading: "Creating new note...",
+      success: "New note was created!",
+      error: "Failed to create a note.",
+    });
+  };
+
   return (
     <>
       <aside
@@ -118,6 +132,9 @@ export const Sidebar = () => {
         </div>
         <div>
           <UserItem />
+          <Item label="Search" onClick={() => {}} icon={Search} shortcut="K" isSearch />
+          <Item label="Setting" onClick={() => {}} icon={Settings} shortcut="L" />
+          <Item label="New Note" onClick={onCreate} icon={PlusCircle} shortcut="N" />
         </div>
         <div className="mt-2">
           {documents?.map((document) => {
