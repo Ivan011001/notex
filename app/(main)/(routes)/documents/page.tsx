@@ -14,10 +14,10 @@ import { toast } from "sonner";
 
 const DocumentsPage = () => {
   const { user } = useUser();
-  const createNote = useMutation(api.documents.createDocument);
+  const create = useMutation(api.documents.create);
 
   const onNoteCreate = () => {
-    const promise = createNote({ title: "No title" });
+    const promise = create({ title: "No title" });
 
     toast.promise(promise, {
       loading: "Creating new note...",

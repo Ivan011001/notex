@@ -1,12 +1,14 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
 import { ElementRef, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
+import { useQuery } from "convex/react";
 
 import { UserItem } from "./user-item";
 import { ChevronsLeft, Menu } from "lucide-react";
+
+import { api } from "@/convex/_generated/api";
 
 import { cn } from "@/lib/utils";
 
@@ -19,6 +21,8 @@ export const Sidebar = () => {
   const navbar = useRef<HTMLDivElement | null>(null);
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const documents = useQuery(api.documents.get);
 
   useEffect(() => {
     if (isMobile) {
@@ -116,7 +120,13 @@ export const Sidebar = () => {
           <UserItem />
         </div>
         <div className="mt-2">
-          <p>Notes</p>
+          {documents?.map((document) => {
+            return (
+              <div key={document._id}>
+                <p>{document.title}</p>
+              </div>
+            );
+          })}
         </div>
         <div
           onMouseDown={handleMouseDown}
