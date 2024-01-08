@@ -76,7 +76,7 @@ export const DocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps)
               }}
               label={document.title}
               icon={FileIcon}
-              documentEmoji={document.icon}
+              documentIcon={document.icon}
               active={params.documentId === document._id}
               level={level}
               onExpand={() => onExpand(document._id)}

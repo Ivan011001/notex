@@ -124,7 +124,7 @@ export const Sidebar = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            "h-6 w-6 rounded-sm text-muted-foreground hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition absolute top-3.5 right-3 opacity-0 group-hover/sidebar:opacity-100",
+            "z-[1] h-6 w-6 rounded-sm text-muted-foreground hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition absolute top-3.5 right-3 opacity-0 group-hover/sidebar:opacity-100",
             isMobile && "opacity-100"
           )}
         >
@@ -159,9 +159,9 @@ export const Sidebar = () => {
             <div
               onClick={resetWidth}
               role="button"
-              className="h-8 w-8 rounded-sm text-muted-foreground hover:bg-neutral-200 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition"
+              className="h-6 w-6 rounded-sm text-muted-foreground hover:bg-neutral-200 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition"
             >
-              <Menu className="w-8 h-8" />
+              <Menu className="w-6 h-6" />
             </div>
           )}
         </nav>
