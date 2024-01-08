@@ -3,7 +3,7 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "usehooks-ts";
-import { useQuery, useMutation } from "convex/react";
+import { useMutation } from "convex/react";
 
 import { UserItem } from "./user-item";
 import { Item } from "./item";
@@ -14,6 +14,7 @@ import { api } from "@/convex/_generated/api";
 
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { DocumentList } from "./document-list";
 
 export const Sidebar = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -25,7 +26,6 @@ export const Sidebar = () => {
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const documents = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
 
   useEffect(() => {
@@ -137,13 +137,7 @@ export const Sidebar = () => {
           <Item label="New Note" onClick={onCreate} icon={PlusCircle} />
         </div>
         <div className="mt-2">
-          {documents?.map((document) => {
-            return (
-              <div key={document._id}>
-                <p>{document.title}</p>
-              </div>
-            );
-          })}
+          <DocumentList />
         </div>
         <div
           onMouseDown={handleMouseDown}
