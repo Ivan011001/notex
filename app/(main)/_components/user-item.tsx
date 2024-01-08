@@ -37,8 +37,8 @@ export const UserItem = () => {
               </span>
             )}
           </div>
-          <div className="ml-auto text-muted-foreground opacity-0 group-hover/usermenu:opacity-100 transition">
-            <ChevronsLeftRightIcon className="rotate-90" />
+          <div className="ml-2 text-muted-foreground opacity-0 group-hover/usermenu:opacity-100 transition">
+            <ChevronsLeftRightIcon className="rotate-90 h-4 w-4" />
           </div>
         </div>
       </DropdownMenuTrigger>

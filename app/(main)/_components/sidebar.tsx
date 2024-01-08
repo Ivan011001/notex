@@ -124,17 +124,17 @@ export const Sidebar = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            "h-8 w-8 rounded-sm text-muted-foreground hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition absolute bottom-3 right-3 opacity-0 group-hover/sidebar:opacity-100",
+            "h-6 w-6 rounded-sm text-muted-foreground hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:text-primary dark:hover:text-secondary-foreground transition absolute top-3.5 right-3 opacity-0 group-hover/sidebar:opacity-100",
             isMobile && "opacity-100"
           )}
         >
-          <ChevronsLeft className="w-8 h-8" />
+          <ChevronsLeft className="w-6 h-6" />
         </div>
         <div>
           <UserItem />
-          <Item label="Search" onClick={() => {}} icon={Search} shortcut="K" isSearch />
-          <Item label="Setting" onClick={() => {}} icon={Settings} shortcut="L" />
-          <Item label="New Note" onClick={onCreate} icon={PlusCircle} shortcut="N" />
+          <Item label="Search" onClick={() => {}} icon={Search} isSearch />
+          <Item label="Setting" onClick={() => {}} icon={Settings} />
+          <Item label="New Note" onClick={onCreate} icon={PlusCircle} />
         </div>
         <div className="mt-2">
           {documents?.map((document) => {
